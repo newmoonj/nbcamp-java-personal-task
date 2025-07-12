@@ -30,9 +30,9 @@ public class App {
         // 🧮 Level 1-3
         // 입력받은 양의 정수 2개와 사칙연산 기호를 사용하여 연산을 진행한 후 결과값을 출력합니다.
         int result = 0;
+        boolean validOperation = true;
 
         switch (operator) {
-
             case '+':
                 result = num1 + num2;
                 break;
@@ -47,15 +47,21 @@ public class App {
                     result = num1 / num2;
                 } else {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    break;
+                    validOperation=false;
                 }
                 break;
             default:
-                System.out.println("지원하지 않는 연산자입니다.");
-                break;
-        }
-        System.out.println("결과: " + result);
-
+                System.out.println("지원하지 않는 연산자입니다. +, -, *, / 중 하나를 입력해주세요.");
+                validOperation=false;
         }
 
+        // 연산이 정상적으로 됐을 때만 결과 출력
+        if (validOperation) {
+            System.out.println("결과: " + result);
+        }
+
+
+
+    // ===========
+        }
     }
