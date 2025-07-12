@@ -137,8 +137,8 @@ public class App {
         boolean running = true; // 반복 제어 플래그
 
         while (running) {
-            int num1 = 0;
-            int num2 = 0;
+            int num1;
+            int num2;
 
             // 첫번째 숫자 입력
             while (true) {
@@ -167,6 +167,7 @@ public class App {
             // 연산자 입력 및 계산 수행
             char operator;
             boolean validOperation; // 연산자 확인 플래그
+            boolean saveResult = true; // 결과 저장 여부
             int result = 0;
 
             do {
@@ -189,7 +190,7 @@ public class App {
                             result = num1 / num2;
                         } else {
                             System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                            validOperation = false;
+                            saveResult = false;
                         }
                         break;
                     default:
@@ -202,7 +203,7 @@ public class App {
 
                 // 연산이 정상적으로 됐을 때만 결과 출력
                 // 배열에 저장(최대 10개)
-                if (validOperation) {
+                if (saveResult) {
                     System.out.println("결과: " + result);
 
                     if (resultCnt < maxResults) {
