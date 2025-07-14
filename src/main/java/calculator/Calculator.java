@@ -8,6 +8,19 @@ package calculator;
 // 연산 수행 역할은 Calculator 클래스가 담당(calculate)
 // 연산 결과는 Calculator 클래스의 연산 결과를 저장하는 필드에 저장
 
+// 🧮 Level 2-3
+// 캡슐화, Getter, Setter
+// 연산 결과를 저장하는 컬렉션 타입 필드를 외부에서 직접 접근 하지 못하도록 수정
+
+// 🧮 Level 2-4
+// 가장 먼저 저장된 데이터를 삭제하는 기능을 가진 메서드
+
+// 🧮 Level 2-5
+// inquiry 메서드
+
+// 🧮 Level 2-6
+// 생성자를 통해 ArrayList 초기화
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +30,7 @@ public class Calculator {
 
     // 생성자
     public Calculator() {
-        results = new ArrayList<>(); // 연산 결과를 저장하는 list
+        results = new ArrayList<>(); // 연산 결과를 저장하는 ArrayList가 생성자를 통해 초기화
     }
 
     // 기능
@@ -47,13 +60,17 @@ public class Calculator {
                 throw new IllegalArgumentException("※ 지원하지 않는 연산자입니다. +, -, *, / 중 하나를 입력해주세요.");
         }
 
-        results.add(result); // 연산 결과를 저장
+//        results.add(result); // 연산 결과를 저장
         return result;
     }
 
-    // 2. 연산 결과 getter
+    // 2. 연산 결과 getter/setter (add 역할)
     public List<Integer> getResults() {
         return results;
+    }
+
+    public void setResults(int result) {
+        results.add(result);
     }
 
     // 3. 가장 먼저 저장된 결과 삭제
@@ -67,7 +84,7 @@ public class Calculator {
     }
 
     // 4. 결과 출력
-    public void printResults() {
+    public void inquiryResults() {
         System.out.println("[RESULT HISTORY]");
         int index = 1;
         for (int value : results) {

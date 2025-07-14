@@ -9,14 +9,25 @@ package calculator;
 // 연산 수행 역할은 Calculator 클래스가 담당(calculate)
 // 연산 결과는 Calculator 클래스의 연산 결과를 저장하는 필드에 저장
 
-import java.util.ArrayList;
+// 🧮 Level 2-3
+// 캡슐화, Getter, Setter
+
+// 🧮 Level 2-4
+// 가장 먼저 저장된 데이터를 삭제하는 기능을 가진 메서드
+
+// 🧮 Level 2-5
+// inquiry 메서드
+
+// 🧮 Level 2-6
+// 생성자를 통해 ArrayList 초기화
+
 import java.util.Scanner;
 
-public class AppTwoOne {
+public class AppTwoSix {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator(); // Calculator 인스턴스 생성
         boolean running = true; // 반복 제어 플래그
 
         while (running) {
@@ -31,19 +42,15 @@ public class AppTwoOne {
                 // 두번째 숫자 입력
                 int num2 = getInputNumber(sc, "두 번째 숫자를 입력하세요: ");
 
-
                 // 연산자 입력 및 계산 수행
                 // 결과 저장 포함
-                char operator;
-
-
-
 
                 System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /): ");
-                operator = sc.next().charAt(0);
+                char operator = sc.next().charAt(0);
 
                 try { // 결과 저장
                     result = calculator.calculate(num1, num2, operator);
+                    calculator.setResults(result); // Setter 활용
                     validOperation = true;
                 } catch (ArithmeticException | IllegalArgumentException e) {
                     // 나눗셈 분모 0 또는 잘못된 연산 기호
@@ -53,7 +60,7 @@ public class AppTwoOne {
             }
             // 결과 출력
             System.out.println("결과: " + result); // 결과 출력
-            calculator.printResults();
+            calculator.inquiryResults();
 
             // 명령 루프
             // 삭제 여부 확인, inquiry로 결과 출력, 프로그램 종료 여부, continue 여부
@@ -70,7 +77,7 @@ public class AppTwoOne {
                 if (commandInput.equals("remove") || commandInput.equals("r")) {
                     calculator.removeFirstResult();
                 } else if (commandInput.equals("inquiry") || commandInput.equals("i")) {
-                    calculator.printResults();
+                    calculator.inquiryResults();
                 } else if (commandInput.equals("continue") || commandInput.equals("c")) {
                     break;
                 } else if (commandInput.equals("exit") || commandInput.equals("e")) {
