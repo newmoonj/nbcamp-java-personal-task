@@ -100,54 +100,58 @@ public class AppOneEight {
                     if (index != results.size()) {
                         System.out.print(", ");
                     }
-                    index ++;
+                    index++;
                 }
 
                 System.out.println();
 
-                // 삭제 여부 확인
+                // 삭제 여부 확인, inquiry로 결과 출력, 프로그램 종료 여부, continue 여부
                 // 루프 추가
                 while (true) {
-                    System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-                    String removeInput = sc.next();
-                    if (removeInput.equals("remove")) {
-                        results.remove(0);
+                    System.out.println("명령어를 입력하세요: ");
+                    System.out.println("-(r)remove: 가장 먼저 저장된 결과 삭제");
+                    System.out.println("-(i)inquiry: RESULT HISTORY 보기");
+                    System.out.println("-(c)continue: 다음 계산 실행");
+                    System.out.println("-(e)exit: 프로그램 종료");
+
+                    String commandInput = sc.next();
+
+                    if (commandInput.equals("remove") || commandInput.equals("r")) {
+
 
                         if (results.size() == 0) {
-                            System.out.println("저장된 결과가 없습니다.");
-                            break; // 더 이상 삭제 불가하므로 탈출
+                            System.out.println("※ 저장된 결과가 없습니다.");
 
                         } else {
-                            // 저장된 결과, 개수 재출력
-                            // 향상된 for문으로 수정
-                            index = 1;
-                            System.out.println("[RESULT HISTORY]");
-                            for (int value : results) {
-                                System.out.print((index) + ": " + value);
-                                if (index != results.size()) {
-                                    System.out.print(", ");
-                                }
-                                index ++;
-                            }
-                            System.out.println();
+                            results.remove(0);
+                            System.out.println("※ 첫 번째 결과가 삭제되었습니다.");
+
                         }
-                    } else { // remove 외 입력시 루프 탈출
+                    } else if (commandInput.equals("inquiry") || commandInput.equals("i")) {
+
+                        index = 1;
+                        System.out.println("[RESULT HISTORY]");
+                        for (int value : results) {
+                            System.out.print((index) + ": " + value);
+                            if (index != results.size()) {
+                                System.out.print(", ");
+                            }
+                            index++;
+                        }
+                        System.out.println();
+
+                    } else if (commandInput.equals("continue") || commandInput.equals("c")) {
                         break;
+                    } else if (commandInput.equals("exit") || commandInput.equals("e")) {
+                        running = false;
+                        break;
+                    } else {
+                        System.out.println("※ 잘못된 명령어입니다. 다시 입력해주세요.");
                     }
-
-
                 }
-            }
 
-            // 종료 여부 확인
-            System.out.println("-".repeat(50));
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            String exitInput = sc.next();
-            if (exitInput.equals("exit")) {
-                running = false;
-            }
+            }}
 
-        }
 
         System.out.println("프로그램을 종료합니다.");
 
@@ -156,4 +160,3 @@ public class AppOneEight {
     }
 
     }
-
