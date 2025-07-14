@@ -188,12 +188,12 @@ public class AppOneFive {
                     case '/':
                         if (num2 != 0) {
                             result = num1 / num2;
-                        } else {
+                        } else { // 0으로 나눴을 경우 결과 저장하지 않고 첫번째 숫자부터 다시 입력
                             System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                             saveResult = false;
                         }
                         break;
-                    default:
+                    default: // 연산자 외의 값 입력했을 경우 다시 연산자 입력
                         System.out.println("지원하지 않는 연산자입니다. +, -, *, / 중 하나를 입력해주세요.");
                         validOperation = false;
 
