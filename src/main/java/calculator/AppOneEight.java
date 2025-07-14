@@ -85,7 +85,6 @@ public class AppOneEight {
 
             // 연산이 정상적으로 됐을 때만 결과 출력
             // 배열에 저장(한도 없음)
-            // remove 입력시 첫번째값 삭제(results.remove(0))
 
             if (saveResult) {
                 System.out.println("결과: " + result); // 결과 출력
