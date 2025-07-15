@@ -79,7 +79,10 @@ public class AppTwoSeven {
                 double radius = getInputDouble(sc, "원의 반지름을 입력하세요: ");
                 double area = calculator.calculateCircleArea(radius);
                 System.out.println("원의 넓이: " + area);
+                calculator.setCircleAreas(area);
                 calculator.inquiryCircleAreas();
+
+
             } else {
                 System.out.println("※ a 또는 b를 입력해주세요.");
                 continue;
